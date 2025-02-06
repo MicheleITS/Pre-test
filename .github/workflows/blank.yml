@@ -1,24 +1,33 @@
 name: Docker CI Example
 
+ 
+
 on: [push, pull_request]
 
+ 
+
 jobs:
+
   build-and-run:
+
     runs-on: ubuntu-latest
 
+ 
+
     steps:
-      # Checkout del codice
+
       - name: Checkout repository
+
         uses: actions/checkout@v3
 
-      # Installa Docker se necessario (di solito è già presente su ubuntu-latest)
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
+ 
 
-      # Costruisci l'immagine Docker
       - name: Build Docker image
+
         run: docker build -t my-simple-app .
 
-      # Esegui il container Docker appena creato
+ 
+
       - name: Run Docker container
+
         run: docker run --rm my-simple-app
